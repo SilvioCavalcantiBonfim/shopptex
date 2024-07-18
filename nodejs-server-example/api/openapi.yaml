@@ -1,0 +1,91 @@
+openapi: 3.0.1
+info:
+  title: Shopptex
+  version: v0
+servers:
+- url: "{protocol}://localhost:8080"
+  variables:
+    protocol:
+      default: http
+      enum:
+      - http
+tags:
+- name: Shop
+  description: Endpoints relacionados à loja e aos produtos
+paths:
+  /info:
+    get:
+      tags:
+      - Shop
+      summary: Obter informações da loja
+      operationId: findShopInformations
+      responses:
+        "200":
+          description: Resposta contendo as informações da loja.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShopResponse'
+      x-swagger-router-controller: Shop
+  /products:
+    get:
+      tags:
+      - Shop
+      summary: Obter todos os produtos
+      operationId: findAllProducts
+      responses:
+        "200":
+          description: Resposta contendo uma lista de produtos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductResponse'
+                x-content-type: application/json
+      x-swagger-router-controller: Shop
+components:
+  schemas:
+    ShopResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nome da loja.
+        color:
+          type: string
+          description: Cor da loja no formato hexadecimal.
+        owner:
+          type: string
+          description: Nome completo do proprietário da loja.
+        department:
+          type: string
+          description: Departamento da loja.
+      description: Informações da loja
+      example:
+        owner: owner
+        color: color
+        name: name
+        department: department
+    ProductResponse:
+      type: object
+      properties:
+        photo:
+          type: string
+          description: URL da imagem do produto (proporção 1:1 recomendada).
+        name:
+          type: string
+          description: Nome do produto.
+        price:
+          type: number
+          description: Preço do produto.
+        is_promotion:
+          type: boolean
+          description: "Se verdadeiro, aplica um desconto de 20% no valor do preç\
+            o."
+      description: Informações do produto
+      example:
+        price: 0.80082819046101150206595775671303272247314453125
+        name: name
+        photo: photo
+        is_promotion: true
