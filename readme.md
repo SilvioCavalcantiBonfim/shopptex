@@ -22,10 +22,10 @@ A API Shop permite obter informações sobre produtos e detalhes da loja. Abaixo
 
 Para obter todos os produtos:
 ```sh
-curl -X GET -H "Accept: application/json" "{protocol}://localhost:8080/products"
+curl -X GET -H "Accept: application/json" "http://localhost:8080/products"
 ```
 
 Para obter informações da loja:
 ```sh
-curl -X GET -H "Accept: application/json" "{protocol}://localhost:8080/info"
+curl -X GET -H "Accept: application/json" "http://localhost:8080/info"
 ```
