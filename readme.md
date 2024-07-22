@@ -29,3 +29,7 @@ Para obter informações da loja:
 ```sh
 curl -X GET -H "Accept: application/json" "http://localhost:8080/info"
 ```
+
+## Projetos do backend
+
+- [Felipe Rocha Silveira](https://github.com/Rochafelip/api_shop_descount)
